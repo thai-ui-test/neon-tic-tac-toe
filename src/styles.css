@@ -28,11 +28,14 @@ button {
   min-height: 100vh;
   place-items: center;
   padding: 32px 18px;
+  overflow: hidden;
   background:
-    linear-gradient(135deg, rgba(14, 10, 36, 0.96), rgba(12, 19, 43, 0.92)),
-    radial-gradient(circle at top left, rgba(77, 230, 255, 0.26), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(255, 53, 163, 0.2), transparent 28%);
+    radial-gradient(circle at 18% 18%, rgba(255, 230, 109, 0.42), transparent 18%),
+    radial-gradient(circle at 78% 22%, rgba(0, 226, 255, 0.38), transparent 22%),
+    radial-gradient(circle at 50% 84%, rgba(255, 45, 149, 0.34), transparent 24%),
+    conic-gradient(from 140deg at 50% 50%, #100f32, #4527a0, #0087ff, #00e5b0, #ffe66d, #ff2d95, #100f32);
   isolation: isolate;
+  animation: funky-sky-shift 16s ease-in-out infinite alternate;
 }
 
 .app-shell::before {
@@ -41,10 +44,27 @@ button {
   z-index: -3;
   content: '';
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+  background-position: 0 0, 0 0, 12px 16px;
+  background-size: 48px 48px, 48px 48px, 72px 72px;
   mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+  animation: disco-grid-drift 18s linear infinite;
+}
+
+.app-shell::after {
+  position: absolute;
+  inset: -18%;
+  z-index: -4;
+  content: '';
+  background:
+    repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0 2px, transparent 2px 18px),
+    linear-gradient(115deg, transparent 0 35%, rgba(255, 255, 255, 0.16) 45%, transparent 55% 100%);
+  mix-blend-mode: screen;
+  opacity: 0.58;
+  transform: rotate(-8deg);
+  animation: neon-wave-spin 22s linear infinite;
 }
 
 .orb {
@@ -284,6 +304,21 @@ h1 {
 @keyframes float {
   from { transform: translate3d(0, 0, 0) scale(1); }
   to { transform: translate3d(24px, -28px, 0) scale(1.08); }
+}
+
+@keyframes funky-sky-shift {
+  from { background-position: 0% 0%, 100% 0%, 50% 100%, 0% 50%; }
+  to { background-position: 8% 12%, 92% 8%, 54% 88%, 100% 50%; }
+}
+
+@keyframes disco-grid-drift {
+  from { background-position: 0 0, 0 0, 12px 16px; }
+  to { background-position: 48px 48px, 48px 48px, 84px 88px; }
+}
+
+@keyframes neon-wave-spin {
+  from { transform: rotate(-8deg) scale(1); }
+  to { transform: rotate(8deg) scale(1.08); }
 }
 
 @media (max-width: 680px) {
