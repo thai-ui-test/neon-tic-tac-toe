@@ -1,0 +1,19 @@
+{
+  "name": "neon-tic-tac-toe",
+  "version": "1.0.0",
+  "description": "A cool web-based tic tac toe game with a neon arcade aesthetic.",
+  "private": false,
+  "type": "module",
+  "scripts": {
+    "start": "vite --host 0.0.0.0 --port 8091",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 8091"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {}
+}
