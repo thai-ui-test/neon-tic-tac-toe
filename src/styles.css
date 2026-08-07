@@ -28,11 +28,32 @@ button {
   min-height: 100vh;
   place-items: center;
   padding: 32px 18px;
-  background:
-    linear-gradient(135deg, rgba(14, 10, 36, 0.96), rgba(12, 19, 43, 0.92)),
-    radial-gradient(circle at top left, rgba(77, 230, 255, 0.26), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(255, 53, 163, 0.2), transparent 28%);
+  overflow: hidden;
+  background: #080817;
   isolation: isolate;
+}
+
+.app-shell::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200vmax;
+  height: 200vmax;
+  z-index: -4;
+  content: '';
+  background: conic-gradient(
+    from 0deg,
+    #ff4d6d,
+    #ff9f1c,
+    #ffe66d,
+    #43e97b,
+    #4d9de0,
+    #9b5de5,
+    #f15bb5,
+    #ff4d6d
+  );
+  animation: spin-rainbow 18s linear infinite;
+  transform: translate(-50%, -50%);
 }
 
 .app-shell::before {
@@ -298,5 +319,17 @@ h1 {
 
   .status-panel p {
     text-align: left;
+  }
+}
+
+@keyframes spin-rainbow {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-shell::after {
+    animation: none;
   }
 }
